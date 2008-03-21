@@ -1,0 +1,13 @@
+$def with (latest_pastes)
+
+$var title: Latest 5 pastes
+
+<h2>Latest 5 pastes</h2>
+
+$for paste in latest_pastes:
+    <div id="control-bar">
+        &#8227; Paste <a href="/view/${paste.id}" title="see paste #${paste.id}">#${paste.id}</a>
+    </div>
+    <pre class="code-box">${paste.code}</pre>
+    <br />
+

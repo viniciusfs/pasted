@@ -1,0 +1,18 @@
+$def with (original, new, diff)
+
+$var title: Differences between $original.id and $new.id
+
+<h2>Differences between pastes</h2>
+
+<div id="control-bar">
+        &#8227; differences between pastes <a href="/view/$original.id" title="see paste">#${original.id}</a> and <a href="/view/$new.id" title="see paste">#${new.id}</a>
+        &#8227; <a href="/diff/$original.id/$new.id/raw" title="download an unified diff file">unified diff</a>
+</div>
+<table class="diff">
+$for line in diff['lines']:
+    <tr class="$line['action']">
+        <td class="line-number">$line['old_line']</td>
+        <td class="line-number">$line['new_line']</td>
+        <td class="content">$line['content']</td>
+    </tr>
+</table>

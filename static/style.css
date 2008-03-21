@@ -1,0 +1,109 @@
+/*
+    Copyright (c) 2008 Vinicius de F. Silva <viniciusfs@gmail.com>
+
+    This file is part of Pasted source code
+    Website: <http://p.oitobits.net/>
+*/
+
+* { margin: 0; padding: 0; }
+h1, h2, h3, p, pre, ul, ol { margin: 1em 0; }
+
+body { background-color: #f0efef; color: #333333; font-family: Arial, Helvetica, sans-serif; text-align: center; }
+h1, h2, h3 { font-family: "Trebuchet MS"; }
+
+#wrapper { width: 733px; margin: auto; padding: 10px; text-align: left; clear: both; display: table; }
+#header { background-color: #333333; color: #f0efef; border-bottom:3px solid #737373; }
+#header h1, #header p, #header ul { margin: 0px; padding: 0px; }
+
+#logo { float: left; }
+#menu { float: right; line-height: 50px; font-weight: bolder; }
+
+ul.navigation { list-style: none; }
+ul.navigation li { display: inline; }
+ul.navigation li a { background-color: #737373; padding: 5px; color: #f0efef; text-decoration: none; }
+ul.navigation li a:hover { background-color: #f0efef; color: #333; }
+
+#content a { color: #333; font-weight: bold; text-decoration: none; }
+#content a:hover { background-color: #737373; color: #f0efef; }
+#content pre { width: 720px; overflow: auto; margin-top: 0px; }
+#content ul { list-style: square; padding-left: 20px; }
+
+#control-bar { background-color: #999; font-size: .8em; padding: 5px 10px; text-align: right; }
+#control-bar a:hover { background-color: #999; color: #f0efef; }
+
+#form { margin-top: 10px; }
+#form textarea, #form input { border: 1px solid #999; display: block; margin-bottom: 5px; background-color: #fafafa; }
+#form textarea { width: 100%; height: 300px; }
+#form input { padding: 2px; }
+#form .hide { display: none; }
+
+.code-box, .highlight { border: 1px solid #999; display: block; margin-bottom: 5px; padding: 10px; background-color: #fafafa; }
+
+table.diff { border: 1px solid #999; width: 100%; font-family: monospace; background-color: #fafafa; }
+table.diff tr.del { background-color: #fcc; }
+table.diff tr.add { background-color: #dfd; }
+table.diff td.line-number { width: 5%; background-color: #f0efef; text-align: center; }
+table.diff td.content { white-space: -moz-pre-wrap; white-space: -o-pre-wrap; white-space: -pre-wrap; white-space: pre-wrap; width: 90%; }
+
+
+/*.highlight  { background: #f8f8f8; }*/
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #008000; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+
