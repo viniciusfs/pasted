@@ -1,0 +1,37 @@
+-*- markdown -*-
+
+Pasted
+======
+
+Pasted is a pastebin clone written in Python, it was my first Python web code
+ever. My personal instance is actually running at [http://p.oitobits.net][1].
+
+Dependencies:
+
+  - web.py
+  - Pygments
+  - SQLobject
+
+This code is organized to run under virtual environment, if you want to run
+your own Pasted clone:
+
+    $ hg clone http://bitbucket.org/viniciusfs/pasted
+
+Enter on Pasted directory and create a new virtual environment called ENV,
+active this new virtualenv and install all dependencies:
+
+    $ easy_install ENV
+    $ source ENV/bin/activate
+    $ easy_install web.py pygments sqlobject
+
+Now you can run pasted_start.py script to get a development instance:
+
+    $ python pasted_start.py
+
+If you want to deploy a Pasted instance using Apache and mod_wsgi just copy
+*extra/apache-wsgi-vhost.conf* to your Apache folder. Don't forget to change
+paths and domain name to your real configuration.
+
+Vinícius Figueiredo
+
+  [1]: http://p.oitobits.net

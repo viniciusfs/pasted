@@ -1,18 +1,9 @@
 """
-    Copyright (c) 2008 Vinicius de F. Silva <viniciusfs@gmail.com>
-
     This file is part of Pasted source code.
-    Website: <http://p.oitobits.net/>
-
+    Copyright (c) 2008 2009 by Vinicius Figueiredo <viniciusfs@gmail.com>
 """
-import os
+
 from sqlobject import *
-
-db = 'db/pasted.db'
-cwd = os.getcwd()
-fullpath = os.path.join(cwd, db)
-
-sqlhub.processConnection = connectionForURI('sqlite://%s' % fullpath)
 
 class Pasted(SQLObject):
     code = StringCol()

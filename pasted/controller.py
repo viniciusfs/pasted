@@ -1,32 +1,30 @@
 """
-    Copyright (c) 2008 Vinicius de F. Silva <viniciusfs@gmail.com>
-
     This file is part of Pasted source code.
-    Website: <http://p.oitobits.net/>
+    Copyright (c) 2008 2009 by Vinicius Figueiredo <viniciusfs@gmail.com>
 """
+
 import web
 import datetime
 
-from pasted.model import Pasted
+from pasted.config import *
 from pasted.utils import *
-
-render = web.template.render('templates/', cache=False)
+from pasted.model import Pasted
 
 class index:
     def GET(self):
-        print render.base(render.form())
+        return render.base(render.form())
 
 class about:
     def GET(self):
-        print render.base(render.about())
+        return render.base(render.about())
 
 class help:
     def GET(self):
-        print render.base(render.help())
+        return render.base(render.help())
 
 class add:
     def POST(self):
-        form_input = web.input()
+        form_input = web.input(_unicode=False)
         if form_input.code.strip():
             hexdigest = calc_md5(form_input.code)
 
@@ -51,7 +49,7 @@ class add:
         except:
             web.seeother('/')
 
-        print render.base(render.form(original))
+        return render.base(render.form(original))
 
 class view:
     def GET(self, paste_id, mode=None):
@@ -64,17 +62,17 @@ class view:
 
         if mode is not None:
             if mode == '.txt':
-                web.header('content-type', 'text/plain')
-                print paste.code
+                web.header('content-type', 'text/plain; charset=utf-8')
+                return paste.code
             elif mode == '.colorful':
                 colorful_code = syntax_highlight(paste)
 
                 if colorful_code is None:
                     web.seeother('/view/'+str(paste.id))
                 else:
-                   print render.base(render.view(paste,colorful_code))
+                   return render.base(render.view(paste,colorful_code))
         else:
-            print render.base(render.view(paste))
+            return render.base(render.view(paste))
 
 class diff:
     def GET(self, original, new, raw=None):
@@ -88,15 +86,15 @@ class diff:
         diff = create_udiff(original, new)
 
         if raw is not None:
-            web.header('content-type', 'text/plain')
-            print diff
+            web.header('content-type', 'text/plain; charset=utf-8')
+            return diff
         else:
             diff = render_udiff(diff)
-            print render.base(render.diff(original, new, diff))
+            return render.base(render.diff(original, new, diff))
 
 class latest:
     def GET(self):
         latest_pastes = Pasted.select(orderBy=Pasted.q.id).reversed()
         latest_pastes = list(latest_pastes[:5])
 
-        print render.base(render.list(latest_pastes))
+        return render.base(render.list(latest_pastes))

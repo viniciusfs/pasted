@@ -1,9 +1,8 @@
 """
-    Copyright (c) 2008 Vinicius de F. Silva <viniciusfs@gmail.com>
-
     This file is part of Pasted source code.
-    Website: <http://p.oitobits.net/>
+    Copyright (c) 2008 2009 by Vinicius Figueiredo <viniciusfs@gmail.com>
 """
+
 import hashlib
 import difflib
 import re
@@ -88,7 +87,7 @@ def render_udiff(udiff):
     return mods
 
 def syntax_highlight(paste):
-    code = paste.code
+    code = paste.code.decode('utf-8')
     try:
         lexer = guess_lexer(code)
     except:
