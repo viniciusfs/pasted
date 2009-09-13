@@ -9,7 +9,6 @@ ever. My personal instance is actually running at [http://p.oitobits.net][1].
 Dependencies:
 
   - web.py
-  - Pygments
   - SQLobject
 
 This code is organized to run under virtual environment, if you want to run
@@ -20,7 +19,7 @@ your own Pasted clone:
 Enter on Pasted directory and create a new virtual environment called ENV,
 active this new virtualenv and install all dependencies:
 
-    $ easy_install ENV
+    $ virtualenv ENV
     $ source ENV/bin/activate
     $ easy_install web.py pygments sqlobject
 

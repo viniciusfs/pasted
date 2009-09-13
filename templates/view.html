@@ -5,17 +5,11 @@ $var title: $paste.id
 <h2>Paste <a href="http://p.oitobits.net/view/$paste.id">#${paste.id}</a></h2>
 
 <div id="control-bar">
-    &#8227; <a href="/view/${paste.id}.txt" title="see a plain text version">txt</a>
-    $if colorful_code is False:
-        &#8227; <a href="/view/${paste.id}.colorful" title="see a colorful version">enable syntax highlight</a>
-    $else:
-        &#8227; <a href="/view/$paste.id" title="disable syntax highlight">disable syntax highlight</a>
+    &#8227; <a href="/view/${paste.id}.txt" title="see a plain text version">text version</a>
     &#8227; <a href="/reply/$paste.id" title="create a new paste based on this one">reply</a>
     $if paste.parent:
         &#8227; paste in reply to <a href="/view/$paste.parent" title="see original paste">#${paste.parent}</a>
         &#8227; <a href="/diff/$paste.parent/$paste.id" title="see differences between #${paste.parent} and #${paste.id}">diff</a>
 </div>
-$if colorful_code is False:
-    <pre class="code-box">$paste.code</pre>
-$else:
-    $:colorful_code
+
+<pre><code>$paste.code</code></pre>

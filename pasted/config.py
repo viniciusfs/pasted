@@ -39,3 +39,6 @@ TEMPLATES = 'templates'
 TEMPLATES_FULLPATH = os.path.join(CWD, TEMPLATES)
 
 render = web.template.render(TEMPLATES_FULLPATH)
+
+URLS_LIMIT = 10
+URLS_PERCENTAGE = 25

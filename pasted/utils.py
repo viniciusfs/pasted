@@ -7,9 +7,8 @@ import hashlib
 import difflib
 import re
 
-from pygments import highlight
-from pygments.lexers import guess_lexer
-from pygments.formatters import HtmlFormatter
+from pasted.config import URLS_LIMIT
+from pasted.config import URLS_PERCENTAGE
 
 def calc_md5(code):
     md5 = hashlib.md5()
@@ -86,11 +85,18 @@ def render_udiff(udiff):
 
     return mods
 
-def syntax_highlight(paste):
-    code = paste.code.decode('utf-8')
-    try:
-        lexer = guess_lexer(code)
-    except:
-        return None
+def is_spam(paste):
+    urlfind = re.compile("[A-Za-z]+://.*?")
+    urls = urlfind.findall(paste)
+    url_count = len(urls)
 
-    return highlight(code, lexer, HtmlFormatter())
+    if url_count > URLS_LIMIT:
+        return True
+    else:
+        word_count = len(paste.split())
+        urls_percentage = (url_count * 100) / word_count
+        
+        if urls_percentage > URLS_PERCENTAGE:
+            return True
+        else:
+            return False

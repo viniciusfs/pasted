@@ -26,6 +26,12 @@ class add:
     def POST(self):
         form_input = web.input(_unicode=False)
         if form_input.code.strip():
+            check_spam = is_spam(form_input.code)
+
+            if check_spam is True:
+                web.seeother('/')
+                return 
+            
             hexdigest = calc_md5(form_input.code)
 
             try:
@@ -95,6 +101,6 @@ class diff:
 class latest:
     def GET(self):
         latest_pastes = Pasted.select(orderBy=Pasted.q.id).reversed()
-        latest_pastes = list(latest_pastes[:5])
+        latest_pastes = list(latest_pastes[:10])
 
         return render.base(render.list(latest_pastes))
